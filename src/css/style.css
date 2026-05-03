@@ -189,8 +189,7 @@ svg {
   justify-content: space-between;
 }
 
-h1 {
-  font-size: 1.1rem;
+.national-park {
   font-family: var(--bs-font-sans-serif);
 }
 
@@ -273,8 +272,9 @@ h1 {
   justify-content: center;
   list-style: none;
   margin: 0;
+  padding: 0;
   background-color: var(--bs-black);
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 }
 
 .park-nav ul a {
@@ -295,9 +295,72 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 10px 30px;
+  padding: 0.8em 1.5em;
 }
 
 .park-nav a:hover {
   background-color: rgba(255, 255, 255, 0.3);
+}
+
+.intro {
+  padding: 1rem;
+}
+
+h1, h2, h3 {
+  font-family: var(--bs-font-sans-serif);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+}
+
+.media-card {
+  flex: 1 1 0px;
+}
+
+.media-card a {
+  text-decoration: none;
+  color: var(--bs-black);
+}
+
+.media-card a:hover {
+  color: var(--bs-crete);
+}
+
+.media-card h2 {
+  font-family: var(--bs-font-sans-serif);
+  margin: 0.2rem 0 0.5rem 0;
+}
+
+.media-card p {
+  margin-bottom: 2.5rem;
+}
+
+#park-footer {
+  background-image: url("../images/topo_pattern.png");
+  padding: 1.5rem;
+}
+
+#park-footer h2 {
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  
+}
+
+#park-footer h3 {
+  margin-top: 0.8rem;
+  margin-bottom: 0.2rem;
+}
+
+#park-footer p {
+  margin: 0.6rem 0;
+}
+
+@media (min-width: 630px) {
+  .info {
+    flex-direction: row;
+    gap: 20px;
+  }
 }

@@ -1,24 +1,22 @@
-import { getParkData } from "./parkService.mjs";
+import { getParkData, getParkInfoLinks } from "./parkService.mjs";
+import setHeaderFooter from "./setHeaderFooter.mjs";
+import { mediaCardTemplate } from "./templates.mjs";
 
 const parkData = getParkData();
+const parkInfoLinks = getParkInfoLinks();
 
-const disclaimer = document.querySelector(".disclaimer > a");
-disclaimer.href = parkData.url;
-disclaimer.innerHTML = parkData.fullName;
-
-function parkInfoTemplate(info) {
-  return `<a href="/" class="hero-banner-title">${info.name}</a>
-  <p>
-    <span>${info.designation}</span>
-    <span>${info.states}</span>
-  </p>`;
+function setParkIntro(data) {
+  const introSection = document.querySelector(".intro");
+  introSection.innerHTML = `<h1>${data.fullName}</h1>`;
+  introSection.innerHTML += `<p>${data.description}</p>`;
 }
 
-const heroContent = document.querySelector(".hero-content");
-heroContent.innerHTML = parkInfoTemplate(parkData);
+function setParkInfo(data) {
+  const infoEl = document.querySelector(".info");
+  const html = data.map(mediaCardTemplate);
+  infoEl.innerHTML = html.join("");
+}
 
-const pageTitle = document.querySelector("head title");
-pageTitle.innerHTML = parkData.fullName;
-
-const heroImage = document.querySelector(".hero img");
-heroImage.src = parkData.images[0].url;
+setHeaderFooter(parkData);
+setParkIntro(parkData);
+setParkInfo(parkInfoLinks);
