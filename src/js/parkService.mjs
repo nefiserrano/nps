@@ -231,3 +231,13 @@ export function getInfoLinks(data) {
   });
   return withUpdatedImages;
 }
+
+export async function getParkAlerts(parkcode) {
+  const parkAlerts = await getJson(`alerts?parkCode=${parkcode}`);
+  return parkAlerts.data;
+}
+
+export async function getVisitorCenterData(parkCode) {
+  const visitorCentersData = await getJson(`visitorcenters?parkCode=${parkCode}`);
+  return visitorCentersData.data;
+}
