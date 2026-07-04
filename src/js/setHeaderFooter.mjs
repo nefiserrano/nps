@@ -3,22 +3,32 @@ import enableNavigation from "./navigation.mjs";
 
 function setHeaderInfo(data) {
   const disclaimer = document.querySelector(".disclaimer > a");
-  disclaimer.href = data.url;
-  disclaimer.innerHTML = data.fullName;
+  if (disclaimer) {
+    disclaimer.href = data.url;
+    disclaimer.innerHTML = data.fullName;
+  }
 
-  const heroContent = document.querySelector(".hero-content");
-  heroContent.innerHTML = parkInfoTemplate(data);
-  
+  const heroContent = document.querySelector(".hero-content, .hero-banner__content");
+  if (heroContent) {
+    heroContent.innerHTML = parkInfoTemplate(data);
+  }
+
   const pageTitle = document.querySelector("head title");
-  pageTitle.textContent = data.fullName;
-  
-  const heroImage = document.querySelector(".hero img");
-  heroImage.src = data.images[0].url;
+  if (pageTitle) {
+    pageTitle.textContent = data.fullName;
+  }
+
+  const heroImage = document.querySelector(".hero img, .hero-banner img");
+  if (heroImage && data.images?.[0]?.url) {
+    heroImage.src = data.images[0].url;
+  }
 }
 
 function setParkFooter(data) {
-  const footer = document.querySelector('#park-footer');
-  footer.innerHTML = footerTemplate(data);
+  const footer = document.querySelector("#park-footer");
+  if (footer) {
+    footer.innerHTML = footerTemplate(data);
+  }
 }
 
 export default function setHeaderFooter(parkData) {
